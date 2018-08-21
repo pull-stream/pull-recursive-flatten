@@ -13,6 +13,8 @@ module.exports = function Flatten () {
               stack.pop()
               if(!stack.length) return cb(true) //end the stream
             }
+            else if(end)
+              return cb(end)
 
             if(Array.isArray(value)) stack.push(Values(value))
             else if('function' === typeof value) stack.push(value)
